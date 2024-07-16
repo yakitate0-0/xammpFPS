@@ -399,7 +399,7 @@ body:active::after {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(116, 115, 115, 0.7);
+    background: rgba(146, 146, 146, 0.7);
     z-index: 1000;
     transition: width 0.5s, height 0.5s, top 0.5s, left 0.5s;
     transform: translate(0, 0);
