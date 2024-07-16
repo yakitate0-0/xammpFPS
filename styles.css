@@ -482,7 +482,6 @@ body:active::after {
 
 .login-container input {
     display: block;
-    width: 100%;
     margin-bottom: 15px;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
