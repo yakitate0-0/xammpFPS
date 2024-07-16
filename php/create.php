@@ -52,13 +52,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&display=swap"
         rel="stylesheet">
     <style>
+        #success-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
         #success-message {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(0, 255, 255, 0.2);
+            background-color: rgba(0, 255, 255, 0.5);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
@@ -83,17 +94,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
 
+    <div id="success-overlay"></div>
     <div id="success-message">
         <h1 class="glitch" data-text="Success!">Success!</h1>
     </div>
 
     <?php if (isset($success) && $success): ?>
-    <script>
-        document.getElementById('success-message').style.display = 'block';
-        setTimeout(function() {
-            window.location.href = 'login.php';
-        }, 2000);
-    </script>
+        <script>
+            document.getElementById('success-message').style.display = 'block';
+            const host = window.location.hostname;
+            const newPort = 8080;
+            setTimeout(function () {
+                window.location.href = `http://${host}:${newPort}/xammpFPS`;
+            }, 2000);
+        </script>
     <?php endif; ?>
 </body>
 
