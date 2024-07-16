@@ -1,3 +1,28 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const startButton = document.getElementById('startButton');
+    const loginScreen = document.getElementById('loginScreen');
+    const loginForm = document.getElementById('loginForm');
+
+    startButton.addEventListener('click', () => {
+        loginScreen.classList.remove('hidden');
+        // 少し遅延を入れてアニメーションを滑らかにする
+        setTimeout(() => {
+            loginScreen.classList.add('visible');
+        }, 10);
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // ここにログイン処理を実装
+        console.log('Login attempted');
+        // 例: ログイン成功後の処理
+        // loginScreen.classList.remove('visible');
+        // setTimeout(() => {
+        //     loginScreen.classList.add('hidden');
+        // }, 300);
+    });
+});
+
 // カーソル用のdivタグを取得してcursorに格納
 var cursor = document.getElementById('cursor');
 
@@ -17,18 +42,18 @@ for (var i = 0; i < link.length; i++) {
     });
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
-
     const startButton = document.getElementById('startButton');
     const particlesContainer = document.getElementById('particles-container');
+    const createScreen = document.getElementById('create');
 
     var backmusic = document.getElementById('backmusic');
 
     startButton.addEventListener('click', () => {
         particlesContainer.classList.remove('hidden');
         createStarfield();
-        backmusic.play();
+        createScreen.style.display = 'block';
+        console.log("getcorrect");
     });
 
     function createStarfield() {
