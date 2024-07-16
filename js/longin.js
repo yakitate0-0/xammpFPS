@@ -21,4 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
         //     loginScreen.classList.add('hidden');
         // }, 300);
     });
+
+    createButton.addEventListener('click', () => {
+        // ここに新規アカウント作成画面を表示する処理を追加
+        console.log('Create account clicked');
+    });
 });
+
