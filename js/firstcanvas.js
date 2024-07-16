@@ -19,7 +19,7 @@ for (var i = 0; i < link.length; i++) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     const startButton = document.getElementById('startButton');
     const particlesContainer = document.getElementById('particles-container');
 
