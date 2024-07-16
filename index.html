@@ -23,11 +23,27 @@
         </h1>
         <div class="button-container">
             <button id="startButton" class="game-button">
-                <span class="btn-content">Are you hero?</span>
+                <span class="btn-content">Are you ready?</span>
                 <span class="btn-glitch"></span>
             </button>
         </div>
     </div>
+
+    <div id="loginScreen" class="login-screen hidden">
+        <div class="login-container">
+            <h2 class="glitch" data-text="LOGIN">LOGIN</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" class="game-button">
+                    <span class="btn-content">Enter</span>
+                    <span class="btn-glitch"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
 
     <div class="scanner"></div>
     <div class="vignette"></div>
@@ -36,6 +52,7 @@
 
     <script src="js/changeserver.js"></script>
     <script src="js/firstcanvas.js"></script>
+    <script src="js/longin.js"></script>
 
 </body>
 
