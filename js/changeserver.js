@@ -4,7 +4,7 @@ document.getElementById('changePortButton').addEventListener('click', function (
     // 新しいポート番号を指定
     const newPort = 3000;
     // 新しいURLにリダイレクト
-    window.location.href = `http://${host}:${newPort}`;
+    // window.location.href = `http://${host}:${newPort}`;
 });
 
 const params = new URLSearchParams(window.location.search);

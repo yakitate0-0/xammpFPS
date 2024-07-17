@@ -522,7 +522,6 @@ body:active::after {
 }
 
 #welcomeMessage {
-    font-size: 36px;
     color: #00ffff;
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
