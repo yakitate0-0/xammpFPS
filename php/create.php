@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="error"><?php echo $error_message; ?></p>
         <?php endif; ?>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            ID:<input type="text" name="id"><br>
+            PlayerID:<input type="text" name="playerid"><br>
             Password:<input type="password" name="pass"><br>
             Name:<input type="text" name="name"><br>
             <input type="submit" value="create">
