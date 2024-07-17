@@ -13,7 +13,7 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
             ]
         );
 
-        $sql = "SELECT* FROM login WHERE id =:id;";
+        $sql = "SELECT * FROM login WHERE id = :id;";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue('id', $_POST["id"], PDO::PARAM_STR);
 
@@ -24,12 +24,21 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
             $login_flag = false;
             foreach ($result as $item) {
                 if (password_verify($_POST["pass"], $item["pass"])) {
+                    $sql = "SELECT coin, playtimes, wintimes FROM playerInfor WHERE id = :id;";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindValue('id', $_POST["id"], PDO::PARAM_STR);
+                    $stmt->execute();
+                    $stats = $stmt->fetch();
+
                     // ログイン成功時のレスポンス
                     $response = [
                         'status' => 'success',
                         'message' => 'ログイン成功',
                         'id' => $item['id'],
-                        'name' => $item['name']  // nameカラムが存在すると仮定
+                        'name' => $item['name'],
+                        'coin' => $stats['coin'],
+                        'playtimes' => $stats['playtimes'],
+                        'wintimes' => $stats['wintimes']
                     ];
                     echo json_encode($response);
                     exit;
@@ -45,6 +54,5 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
     } catch (Exception $e) {
         print ($e->getMessage() . "<br>");
     }
-
 }
 ?>

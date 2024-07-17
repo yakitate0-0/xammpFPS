@@ -25,12 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('ログイン成功');
                     console.log('ID:', data.id);
                     console.log('Name:', data.name);
+                    console.log('Coin:', data.coin);
+                    console.log('Playtimes:', data.playtimes);
+                    console.log('Wintimes:', data.wintimes);
 
                     // ここでIDとnameを使って何かを行う
                     // 例: グローバル変数に保存
                     window.loggedInUser = {
                         id: data.id,
-                        name: data.name
+                        name: data.name,
+                        coin: data.coin,
+                        playtimes: data.playtimes,
+                        wintimes: data.wintimes
                     };
 
                     // ログイン画面を非表示にする

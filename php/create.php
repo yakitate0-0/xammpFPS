@@ -15,26 +15,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]
             );
 
-            $sql = "INSERT INTO login (id, pass, name)VALUES(:id, :pass, :name);";
+            // トランザクションを開始
+            $pdo->beginTransaction();
+
+            // loginテーブルに挿入
+            $sql = "INSERT INTO login (id, pass, name) VALUES (:id, :pass, :name);";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue('id', $_POST["id"], PDO::PARAM_STR);
-
             $pass = password_hash($_POST["pass"], PASSWORD_DEFAULT);
             $stmt->bindValue('pass', $pass, PDO::PARAM_STR);
             $stmt->bindValue('name', $_POST["name"], PDO::PARAM_STR);
-
             $result = $stmt->execute();
 
-            if ($result == true) {
+            if ($result) {
+                // playerInforテーブルに初期値を挿入
+                $sql = "INSERT INTO playerInfor (id, coin, playtimes, wintimes) VALUES (:id, 0, 0, 0);";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue('id', $_POST["id"], PDO::PARAM_STR);
+                $stmt->execute();
+
+                // トランザクションをコミット
+                $pdo->commit();
+
                 $_SESSION['creation_success'] = true;
                 $_SESSION['new_id'] = $_POST["id"];
                 $_SESSION['new_name'] = $_POST["name"];
                 $success = true;
             } else {
+                $pdo->rollBack();
                 $error_message = "Creation failed!";
             }
-
         } catch (Exception $e) {
+            $pdo->rollBack();
             $error_message = "Error: " . $e->getMessage();
         }
     }
