@@ -429,9 +429,12 @@ body:active::after {
 }
 
 @keyframes twinkle {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0;
     }
+
     50% {
         opacity: 1;
     }
@@ -506,6 +509,5 @@ body:active::after {
     left: 20%;
     width: 100%;
     height: 60%;
-    color: #00eaff;
     z-index: 1100;
 }
