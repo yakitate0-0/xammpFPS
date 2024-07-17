@@ -446,7 +446,7 @@ body:active::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -512,7 +512,21 @@ body:active::after {
     z-index: 1100;
 }
 
-#homeview{
-    display: none;
-    z-index: 1100;
+#homeview {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1000;
+}
+
+#welcomeMessage {
+    font-size: 36px;
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+#changePortButton {
+    position: fixed;
 }

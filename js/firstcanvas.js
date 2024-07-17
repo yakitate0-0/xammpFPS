@@ -22,34 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    console.log('ログイン成功');
-                    console.log('ID:', data.id);
-                    console.log('Name:', data.name);
-                    console.log('Coin:', data.coin);
-                    console.log('Playtimes:', data.playtimes);
-                    console.log('Wintimes:', data.wintimes);
-
-                    // ここでIDとnameを使って何かを行う
-                    // 例: グローバル変数に保存
-                    window.loggedInUser = {
-                        id: data.id,
-                        name: data.name,
-                        coin: data.coin,
-                        playtimes: data.playtimes,
-                        wintimes: data.wintimes
-                    };
-
-                    // ログイン画面を非表示にする
-                    loginScreen.classList.remove('visible');
-                    setTimeout(() => {
-                        loginScreen.classList.add('hidden');
-                    }, 300);
-
-                    const homeview = document.getElementById('homeview').style.display = "block";
-
+                    handleLoginSuccess(data);
                 } else {
-                    console.log('ログイン失敗:', data.message);
-                    alert('ログインに失敗しました。IDとパスワードを確認してください。');
+                    handleLoginError(data.message);
                 }
             })
             .catch(error => {
