@@ -24,16 +24,22 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
             $login_flag = false;
             foreach ($result as $item) {
                 if (password_verify($_POST["pass"], $item["pass"])) {
-                    print ("<br><br>login成功<br>");
-                    $login_flag = true;
-                    break;
+                    // ログイン成功時のレスポンス
+                    $response = [
+                        'status' => 'success',
+                        'message' => 'ログイン成功',
+                        'id' => $item['id'],
+                        'name' => $item['name']  // nameカラムが存在すると仮定
+                    ];
+                    echo json_encode($response);
+                    exit;
                 }
             }
             if ($login_flag == false) {
-                print ("<br><br>ログインに失敗しました<br>");
+                echo json_encode(['status' => 'error', 'message' => 'ログインに失敗しました']);
             }
         } else {
-            print ("<br><br>ログインに失敗しました<br>");
+            echo json_encode(['status' => 'error', 'message' => 'ログインに失敗しました']);
         }
 
     } catch (Exception $e) {

@@ -19,26 +19,45 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-            if (data.includes('login成功')) {
+            if (data.status === 'success') {
                 console.log('ログイン成功');
-                // ログイン成功時の処理をここに追加
+                console.log('ID:', data.id);
+                console.log('Name:', data.name);
+                
+                // ここでIDとnameを使って何かを行う
+                // 例: グローバル変数に保存
+                window.loggedInUser = {
+                    id: data.id,
+                    name: data.name
+                };
+                
+                // ログイン画面を非表示にする
                 loginScreen.classList.remove('visible');
                 setTimeout(() => {
                     loginScreen.classList.add('hidden');
                 }, 300);
+
+                // ログイン後の処理（例：ゲーム画面への遷移）
+                // startGame(data.id, data.name);
             } else {
-                console.log('ログイン失敗');
-                // ログイン失敗時の処理をここに追加
+                console.log('ログイン失敗:', data.message);
                 alert('ログインに失敗しました。IDとパスワードを確認してください。');
             }
         })
         .catch(error => {
             console.error('エラー:', error);
+            alert('ログイン処理中にエラーが発生しました。');
         });
     });
 });
+
+// ログイン後にゲームを開始する関数の例
+function startGame(id, name) {
+    console.log(`ようこそ、${name}さん（ID: ${id}）`);
+    // ここにゲーム開始のロジックを記述
+}
 
 // カーソル用のdivタグを取得してcursorに格納
 var cursor = document.getElementById('cursor');
