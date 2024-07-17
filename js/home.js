@@ -29,7 +29,7 @@ function handleLoginSuccess(data) {
     welcomeMessage.textContent = `Welcome ${data.name}`;
     welcomeMessage.style.display = "block";
 
-    // 3秒後にウェルカムメッセージを非表示にし、スタートボトンを表示する
+    // 3秒後にウェルカムメッセージを非表示にし、スタートボタンを表示する
     setTimeout(() => {
         welcomeMessage.style.display = "none";
         changePortButton.style.display = "block";
