@@ -511,3 +511,8 @@ body:active::after {
     height: 60%;
     z-index: 1100;
 }
+
+#homeview{
+    display: none;
+    z-index: 1100;
+}

@@ -12,44 +12,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const formData = new FormData(loginForm);
-        
+
         fetch('php/login.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                console.log('ログイン成功');
-                console.log('ID:', data.id);
-                console.log('Name:', data.name);
-                
-                // ここでIDとnameを使って何かを行う
-                // 例: グローバル変数に保存
-                window.loggedInUser = {
-                    id: data.id,
-                    name: data.name
-                };
-                
-                // ログイン画面を非表示にする
-                loginScreen.classList.remove('visible');
-                setTimeout(() => {
-                    loginScreen.classList.add('hidden');
-                }, 300);
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    console.log('ログイン成功');
+                    console.log('ID:', data.id);
+                    console.log('Name:', data.name);
 
-                // ログイン後の処理（例：ゲーム画面への遷移）
-                // startGame(data.id, data.name);
-            } else {
-                console.log('ログイン失敗:', data.message);
-                alert('ログインに失敗しました。IDとパスワードを確認してください。');
-            }
-        })
-        .catch(error => {
-            console.error('エラー:', error);
-            alert('ログイン処理中にエラーが発生しました。');
-        });
+                    // ここでIDとnameを使って何かを行う
+                    // 例: グローバル変数に保存
+                    window.loggedInUser = {
+                        id: data.id,
+                        name: data.name
+                    };
+
+                    // ログイン画面を非表示にする
+                    loginScreen.classList.remove('visible');
+                    setTimeout(() => {
+                        loginScreen.classList.add('hidden');
+                    }, 300);
+
+                    const homeview = document.getElementById('homeview').style.display = "block";
+
+                } else {
+                    console.log('ログイン失敗:', data.message);
+                    alert('ログインに失敗しました。IDとパスワードを確認してください。');
+                }
+            })
+            .catch(error => {
+                console.error('エラー:', error);
+                alert('ログイン処理中にエラーが発生しました。');
+            });
     });
 });
 
