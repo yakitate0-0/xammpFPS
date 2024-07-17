@@ -32,7 +32,6 @@ document.getElementById('changePortButton').addEventListener('click', function (
     });
 });
 
-
 const params = new URLSearchParams(window.location.search);
 const result = params.get('result');
 const playerid = params.get('playerid');

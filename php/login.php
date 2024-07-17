@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
     try {
@@ -21,7 +22,6 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
         $result = $stmt->fetchAll();
 
         if (count($result) != 0) {
-            $login_flag = false;
             foreach ($result as $item) {
                 if (password_verify($_POST["pass"], $item["pass"])) {
                     $sql = "SELECT coin, playtimes, wintimes FROM playerInfor WHERE id = :id;";
@@ -31,6 +31,14 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
                     $stats = $stmt->fetch();
 
                     // ログイン成功時のレスポンス
+                    $_SESSION['user'] = [
+                        'id' => $item['id'],
+                        'name' => $item['name'],
+                        'coin' => $stats['coin'],
+                        'playtimes' => $stats['playtimes'],
+                        'wintimes' => $stats['wintimes']
+                    ];
+
                     $response = [
                         'status' => 'success',
                         'message' => 'ログイン成功',
@@ -44,15 +52,12 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
                     exit;
                 }
             }
-            if ($login_flag == false) {
-                echo json_encode(['status' => 'error', 'message' => 'ログインに失敗しました']);
-            }
+            echo json_encode(['status' => 'error', 'message' => 'ログインに失敗しました']);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'ログインに失敗しました']);
         }
-
     } catch (Exception $e) {
-        print ($e->getMessage() . "<br>");
+        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     }
 }
 ?>
