@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startButton.addEventListener('click', () => {
         loginScreen.classList.remove('hidden');
-        // 少し遅延を入れてアニメーションを滑らかにする
         setTimeout(() => {
             loginScreen.classList.add('visible');
         }, 10);
@@ -13,13 +12,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        // ここにログイン処理を実装
-        console.log('Login attempted');
-        // 例: ログイン成功後の処理
-        // loginScreen.classList.remove('visible');
-        // setTimeout(() => {
-        //     loginScreen.classList.add('hidden');
-        // }, 300);
+        
+        const formData = new FormData(loginForm);
+        
+        fetch('php/login.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data.includes('login成功')) {
+                console.log('ログイン成功');
+                // ログイン成功時の処理をここに追加
+                loginScreen.classList.remove('visible');
+                setTimeout(() => {
+                    loginScreen.classList.add('hidden');
+                }, 300);
+            } else {
+                console.log('ログイン失敗');
+                // ログイン失敗時の処理をここに追加
+                alert('ログインに失敗しました。IDとパスワードを確認してください。');
+            }
+        })
+        .catch(error => {
+            console.error('エラー:', error);
+        });
     });
 });
 
