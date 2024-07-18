@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const logoutButton = document.getElementById('logoutButton');
     const particlesContainer = document.getElementById('particles-container');
+    var backmusic = document.getElementById('backmusic');
 
     // セッションが存在するか確認するリクエストを送信
     fetch('php/check_session.php')
@@ -63,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const bearImange = document.getElementById('bearImage');
         let waittime = 3000;
 
+
         particlesContainer.classList.remove('hidden');
         // ログイン画面を非表示にする
         loginScreen.classList.remove('visible');
@@ -89,12 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
         welcomeMessage.style.display = "block";
 
         // 3秒後にウェルカムメッセージを非表示にし、スタートボタンを表示する
-        setTimeout(() => {
+
+
+        welcomeMessage.addEventListener('click',()=>{
+            backmusic.play();
             welcomeMessage.style.display = "none";
             changePortButton.style.display = "block";
             logoutButton.style.display = "block";
             bearImange.style.display="block";
-        }, waittime);
+        });
     }
 
     function handleLoginError(message) {
