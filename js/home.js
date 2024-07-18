@@ -140,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
             welcomeMessage.textContent = `Welcome ${user.name}`;
         }
         welcomeMessage.style.display = "block";
+        bearImange.style.display = "none";
+
 
         welcomeMessage.addEventListener('click', () => {
             backmusic.play();
