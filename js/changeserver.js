@@ -15,21 +15,21 @@ document.getElementById('changePortButton').addEventListener('click', function (
             'id': window.loggedInUser.id
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            console.log('Playtimes updated successfully');
-            // 新しいURLにリダイレクト
-            window.location.href = `http://${host}:${newPort}?id=${window.loggedInUser.id}`;
-        } else {
-            console.error('Failed to update playtimes:', data.message);
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                console.log('Playtimes updated successfully');
+                // 新しいURLにリダイレクト
+                window.location.href = `http://${host}:${newPort}?id=${window.loggedInUser.id}`;
+            } else {
+                console.error('Failed to update playtimes:', data.message);
+                alert('Failed to update playtimes.');
+            }
+        })
+        .catch(error => {
+            console.error('エラー:', error);
             alert('Failed to update playtimes.');
-        }
-    })
-    .catch(error => {
-        console.error('エラー:', error);
-        alert('Failed to update playtimes.');
-    });
+        });
 });
 
 const params = new URLSearchParams(window.location.search);

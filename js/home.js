@@ -2,10 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('startButton');
     const loginScreen = document.getElementById('loginScreen');
     const loginForm = document.getElementById('loginForm');
-    const homeview = document.getElementById('homeview');
-    const welcomeMessage = document.getElementById('welcomeMessage');
-    const changePortButton = document.getElementById('changePortButton');
     const logoutButton = document.getElementById('logoutButton');
+    const particlesContainer = document.getElementById('particles-container');
 
     // セッションが存在するか確認するリクエストを送信
     fetch('php/check_session.php')
@@ -72,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         homeview.style.display = "block";
 
-        // createStarfield();
+        createStarfield();
         welcomeMessage.textContent = `Welcome ${user.name}`;
         welcomeMessage.style.display = "block";
 
