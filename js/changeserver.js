@@ -41,7 +41,3 @@ url.searchParams.delete('playerid');
 window.history.replaceState({}, document.title, url);
 
 // 取得した値を表示
-if (result) {
-    console.log(result);
-    console.log(playerid);
-}

@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const changePortButton = document.getElementById('changePortButton');
         const logoutButton = document.getElementById('logoutButton');
         const particlesContainer = document.getElementById('particles-container');
+        let waittime = 3000;
 
         particlesContainer.classList.remove('hidden');
         // ログイン画面を非表示にする
@@ -71,7 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
         homeview.style.display = "block";
 
         createStarfield();
-        welcomeMessage.textContent = `Welcome ${user.name}`;
+        if (result) {
+            console.log(result);
+            console.log(playerid);
+            if (playerid == result) {
+                waittime = 5000;
+                welcomeMessage.textContent = `${user.name} LOSE!`;
+            } else if (playerid != result) {
+                waittime = 5000;
+                welcomeMessage.textContent = `${user.name} WIN!`;
+            }
+        } else {
+            welcomeMessage.textContent = `Welcome ${user.name}`;
+        }
         welcomeMessage.style.display = "block";
 
         // 3秒後にウェルカムメッセージを非表示にし、スタートボタンを表示する
@@ -79,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             welcomeMessage.style.display = "none";
             changePortButton.style.display = "block";
             logoutButton.style.display = "block";
-        }, 3000);
+        }, waittime);
     }
 
     function handleLoginError(message) {
