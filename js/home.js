@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         InforButton.addEventListener('click', () => {
             showInfoScreen();
         });
-    
+
         backButton.addEventListener('click', () => {
             hideInfoScreen();
         });

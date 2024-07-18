@@ -587,46 +587,71 @@ body:active::after {
 }
 
 #bearImage {
-    display: none; /* 画像を表示 */
-    position: fixed; /* 絶対位置指定 */
-    top: 50%; /* 垂直中央 */
-    left: 50%; /* 水平中央 */
-    transform: translate(-50%, -50%); /* 画像の中央を基準に位置を調整 */
-    width: 400%; /* 画像の幅を適切に調整 */
+    display: none;
+    /* 画像を表示 */
+    position: fixed;
+    /* 絶対位置指定 */
+    top: 50%;
+    /* 垂直中央 */
+    left: 50%;
+    /* 水平中央 */
+    transform: translate(-50%, -50%);
+    /* 画像の中央を基準に位置を調整 */
+    width: 400%;
+    /* 画像の幅を適切に調整 */
     height: auto;
-    z-index: 100; /* 他の要素より前面に表示 */
+    z-index: 100;
+    /* 他の要素より前面に表示 */
 }
 
 #rightImage {
-    display: none; /* 画像を表示 */
-    position: fixed; /* 絶対位置指定 */
-    top: 50%; /* 垂直中央 */
-    left: 50%; /* 水平中央 */
-    transform: translate(250%, -50%); /* 画像の中央を基準に位置を調整 */
-    width: 40%; /* 画像の幅を適切に調整 */
+    display: none;
+    /* 画像を表示 */
+    position: fixed;
+    /* 絶対位置指定 */
+    top: 50%;
+    /* 垂直中央 */
+    left: 50%;
+    /* 水平中央 */
+    transform: translate(250%, -50%);
+    /* 画像の中央を基準に位置を調整 */
+    width: 40%;
+    /* 画像の幅を適切に調整 */
     height: auto;
-    z-index: 100; /* 他の要素より前面に表示 */
+    z-index: 100;
+    /* 他の要素より前面に表示 */
 }
 
 
 #leftImage {
-    display: none; /* 画像を表示 */
-    position: fixed; /* 絶対位置指定 */
-    top: 50%; /* 垂直中央 */
-    left: 50%; /* 水平中央 */
-    transform: translate(-350%, -50%); /* 画像の中央を基準に位置を調整 */
-    width: 40%; /* 画像の幅を適切に調整 */
+    display: none;
+    /* 画像を表示 */
+    position: fixed;
+    /* 絶対位置指定 */
+    top: 50%;
+    /* 垂直中央 */
+    left: 50%;
+    /* 水平中央 */
+    transform: translate(-350%, -50%);
+    /* 画像の中央を基準に位置を調整 */
+    width: 40%;
+    /* 画像の幅を適切に調整 */
     height: auto;
-    z-index: 100; /* 他の要素より前面に表示 */
+    z-index: 100;
+    /* 他の要素より前面に表示 */
 }
 
 
 
 
-#changePortButton, #logoutButton, #InforButton{
+#changePortButton,
+#logoutButton,
+#InforButton {
     margin: 10px 0;
-    position: relative; /* 追加 */
-    z-index: 1; /* 追加 */
+    position: relative;
+    /* 追加 */
+    z-index: 1;
+    /* 追加 */
 }
 
 #InforButton {
@@ -647,6 +672,7 @@ body:active::after {
     left: -35vw;
     z-index: 1000;
 }
+
 #InforButton:hover {
     background-color: rgba(0, 221, 255, 0.1);
     box-shadow: 0 0 25px rgba(0, 174, 255, 0.8);
