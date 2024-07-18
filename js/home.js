@@ -123,15 +123,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                 })
 
+                fetch('php/dataup.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        'action': 'update_win',
+                        'id': window.loggedInUser.id
+                    })
+                })
+
 
             }
         } else {
             welcomeMessage.textContent = `Welcome ${user.name}`;
         }
         welcomeMessage.style.display = "block";
-
-        // 3秒後にウェルカムメッセージを非表示にし、スタートボタンを表示する
-
 
         welcomeMessage.addEventListener('click', () => {
             backmusic.play();
