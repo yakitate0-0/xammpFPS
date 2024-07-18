@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.loggedInUser = user;
 
+        const InforButton = document.getElementById('InforButton');
         const loginScreen = document.getElementById('loginScreen');
         const homeview = document.getElementById('homeview');
         const welcomeMessage = document.getElementById('welcomeMessage');
@@ -81,9 +82,37 @@ document.addEventListener('DOMContentLoaded', () => {
             if (playerid == result) {
                 waittime = 5000;
                 welcomeMessage.textContent = `${user.name} LOSE!`;
+
+
+                fetch('php/dataup.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        'action': 'update_coinlose',
+                        'id': window.loggedInUser.id
+                    })
+                })
+
+
             } else if (playerid != result) {
                 waittime = 5000;
                 welcomeMessage.textContent = `${user.name} WIN!`;
+
+
+                fetch('php/dataup.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        'action': 'update_coinwin',
+                        'id': window.loggedInUser.id
+                    })
+                })
+
+
             }
         } else {
             welcomeMessage.textContent = `Welcome ${user.name}`;
@@ -93,12 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // 3秒後にウェルカムメッセージを非表示にし、スタートボタンを表示する
 
 
-        welcomeMessage.addEventListener('click',()=>{
+        welcomeMessage.addEventListener('click', () => {
             backmusic.play();
             welcomeMessage.style.display = "none";
             changePortButton.style.display = "block";
             logoutButton.style.display = "block";
-            bearImange.style.display="block";
+            InforButton.style.display = "block";
+            bearImange.style.display = "block";
         });
     }
 

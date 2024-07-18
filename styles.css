@@ -571,8 +571,8 @@ body:active::after {
     text-transform: uppercase;
     letter-spacing: 2px;
     box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
-    top: 40vh;
-    left: -40vw;
+    top: 35vh;
+    left: -35vw;
     z-index: 1000;
 }
 
@@ -598,8 +598,36 @@ body:active::after {
 }
 
 
-#changePortButton, #logoutButton {
+#changePortButton, #logoutButton, #InforButton{
     margin: 10px 0;
     position: relative; /* 追加 */
     z-index: 1; /* 追加 */
+}
+
+#InforButton {
+    background-color: transparent;
+    color: #ff00ff;
+    border: 2px solid #ff00ff;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: none;
+    transition: all 0.3s;
+    position: absolute;
+    overflow: hidden;
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    top: -35vh;
+    left: -35vw;
+    z-index: 1000;
+}
+#InforButton:hover {
+    background-color: rgba(255, 0, 255, 0.1);
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+    transform: scale(1.05);
+}
+
+#InforButton:active {
+    transform: scale(0.95);
 }
