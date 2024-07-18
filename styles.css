@@ -571,9 +571,8 @@ body:active::after {
     text-transform: uppercase;
     letter-spacing: 2px;
     box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
-    /* Position: Adjust these values as needed */
-    top: 35vh;
-    left: 5vw;
+    top: 40vh;
+    left: -40vw;
     z-index: 1000;
 }
 
