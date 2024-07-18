@@ -1,6 +1,14 @@
 <?php
 session_start();
 
+function getUserData($pdo, $id) {
+    $sql = "SELECT coin, playtimes, wintimes FROM playerInfor WHERE id = :id;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue('id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch();
+}
+
 if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
     try {
         $pdo = new PDO(
@@ -24,13 +32,8 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
         if (count($result) != 0) {
             foreach ($result as $item) {
                 if (password_verify($_POST["pass"], $item["pass"])) {
-                    $sql = "SELECT coin, playtimes, wintimes FROM playerInfor WHERE id = :id;";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->bindValue('id', $_POST["id"], PDO::PARAM_STR);
-                    $stmt->execute();
-                    $stats = $stmt->fetch();
+                    $stats = getUserData($pdo, $_POST["id"]);
 
-                    // ログイン成功時のレスポンス
                     $_SESSION['user'] = [
                         'id' => $item['id'],
                         'name' => $item['name'],
@@ -42,11 +45,7 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
                     $response = [
                         'status' => 'success',
                         'message' => 'ログイン成功',
-                        'id' => $item['id'],
-                        'name' => $item['name'],
-                        'coin' => $stats['coin'],
-                        'playtimes' => $stats['playtimes'],
-                        'wintimes' => $stats['wintimes']
+                        'user' => $_SESSION['user']
                     ];
                     echo json_encode($response);
                     exit;
