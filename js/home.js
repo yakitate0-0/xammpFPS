@@ -227,6 +227,13 @@ document.addEventListener('DOMContentLoaded', () => {
         leftImange.style.display = "block";
     }
 
+
+    rightImange.addEventListener('click', () => {
+        window.char++;
+    });
+
+
+
     function createStarfield() {
         const starCount = 200;
 

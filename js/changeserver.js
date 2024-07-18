@@ -20,7 +20,7 @@ document.getElementById('changePortButton').addEventListener('click', function (
             if (data.status === 'success') {
                 console.log('Playtimes updated successfully');
                 // 新しいURLにリダイレクト
-                window.location.href = `http://${host}:${newPort}?id=${window.loggedInUser.id}`;
+                window.location.href = `http://${host}:${newPort}?id=${window.loggedInUser.id}&char=${window.char}`;
             } else {
                 console.error('Failed to update playtimes:', data.message);
                 alert('Failed to update playtimes.');
@@ -39,5 +39,6 @@ const url = new URL(window.location);
 url.searchParams.delete('result');
 url.searchParams.delete('playerid');
 window.history.replaceState({}, document.title, url);
+window.char = 0;
 
 // 取得した値を表示
