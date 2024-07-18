@@ -586,22 +586,30 @@ body:active::after {
     transform: scale(0.95);
 }
 
-#bearImage {
-    display: none;
-    /* 画像を表示 */
-    position: fixed;
-    /* 絶対位置指定 */
-    top: 50%;
-    /* 垂直中央 */
-    left: 50%;
-    /* 水平中央 */
-    transform: translate(-50%, -50%);
-    /* 画像の中央を基準に位置を調整 */
-    width: 400%;
-    /* 画像の幅を適切に調整 */
-    height: auto;
-    z-index: 100;
-    /* 他の要素より前面に表示 */
+#bearImage,
+#lightImage,
+#manyImage,
+#killImage,
+#jumpImage,
+#healImage,
+#brakerImage,
+#anyImage
+{
+display: none;
+/* 画像を表示 */
+position: fixed;
+/* 絶対位置指定 */
+top: 50%;
+/* 垂直中央 */
+left: 50%;
+/* 水平中央 */
+transform: translate(-50%, -50%);
+/* 画像の中央を基準に位置を調整 */
+width: 400%;
+/* 画像の幅を適切に調整 */
+height: auto;
+z-index: 100;
+/* 他の要素より前面に表示 */
 }
 
 #rightImage {
