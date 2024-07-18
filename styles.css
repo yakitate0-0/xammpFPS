@@ -400,7 +400,7 @@ body:active::after {
     height: 10px;
     border-radius: 50%;
     background: rgba(146, 146, 146, 0.7);
-    z-index: 1000;
+    z-index: 10000;
     transition: width 0.5s, height 0.5s, top 0.5s, left 0.5s;
     transform: translate(0, 0);
     pointer-events: none;
@@ -532,7 +532,7 @@ body:active::after {
     color: #00ffff;
     border: 2px solid #00ffff;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 50px;
     cursor: none;
     transition: all 0.3s;
     position: fixed;
@@ -542,8 +542,8 @@ body:active::after {
     letter-spacing: 2px;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
     /* Position: Adjust these values as needed */
-    top: 35vh;
-    left: -15vw;
+    top: 42vh;
+    left: 35vw;
     z-index: 1000;
 }
 
@@ -565,7 +565,7 @@ body:active::after {
     font-size: 18px;
     cursor: none;
     transition: all 0.3s;
-    position: fixed;
+    position: absolute;
     overflow: hidden;
     font-family: 'Audiowide', cursive;
     text-transform: uppercase;
@@ -588,8 +588,19 @@ body:active::after {
 }
 
 #bearImage {
-    display: none;
-    width: 80%; /* 画像サイズを調整 */
-    height: auto; /* アスペクト比を維持 */
-    margin: 20px 0; /* 上下のマージンを追加 */
+    display: none; /* 画像を表示 */
+    position: fixed; /* 絶対位置指定 */
+    top: 50%; /* 垂直中央 */
+    left: 50%; /* 水平中央 */
+    transform: translate(-50%, -50%); /* 画像の中央を基準に位置を調整 */
+    width: 400%; /* 画像の幅を適切に調整 */
+    height: auto;
+    z-index: 100; /* 他の要素より前面に表示 */
+}
+
+
+#changePortButton, #logoutButton {
+    margin: 10px 0;
+    position: relative; /* 追加 */
+    z-index: 1; /* 追加 */
 }
