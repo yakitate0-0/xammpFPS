@@ -1,3 +1,22 @@
+const loginScreen = document.getElementById('loginScreen');
+const homeview = document.getElementById('homeview');
+const welcomeMessage = document.getElementById('welcomeMessage');
+const changePortButton = document.getElementById('changePortButton');
+const logoutButton = document.getElementById('logoutButton');
+const particlesContainer = document.getElementById('particles-container');
+const bearImange = document.getElementById('bearImage');
+const rightImange = document.getElementById('rightImage');
+const leftImange = document.getElementById('leftImage');
+const InforButton = document.getElementById('InforButton');
+const infoScreen = document.getElementById('infoScreen');
+const backButton = document.getElementById('backButton');
+const userCoin = document.getElementById('userCoin');
+const userPlayTimes = document.getElementById('userPlayTimes');
+const userWinTimes = document.getElementById('userWinTimes');
+const userKillRate = document.getElementById('userKillRate');
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('startButton');
     const loginScreen = document.getElementById('loginScreen');
@@ -55,14 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.loggedInUser = user;
 
-        const InforButton = document.getElementById('InforButton');
-        const loginScreen = document.getElementById('loginScreen');
-        const homeview = document.getElementById('homeview');
-        const welcomeMessage = document.getElementById('welcomeMessage');
-        const changePortButton = document.getElementById('changePortButton');
-        const logoutButton = document.getElementById('logoutButton');
-        const particlesContainer = document.getElementById('particles-container');
-        const bearImange = document.getElementById('bearImage');
         let waittime = 3000;
 
 
@@ -129,7 +140,19 @@ document.addEventListener('DOMContentLoaded', () => {
             logoutButton.style.display = "block";
             InforButton.style.display = "block";
             bearImange.style.display = "block";
+            rightImange.style.display = "block";
+            leftImange.style.display = "block";
+
         });
+
+        InforButton.addEventListener('click', () => {
+            showInfoScreen();
+        });
+    
+        backButton.addEventListener('click', () => {
+            hideInfoScreen();
+        });
+
     }
 
     function handleLoginError(message) {
@@ -152,6 +175,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('エラー:', error);
             });
     });
+
+    function showInfoScreen() {
+        // ユーザー情報を更新
+        userCoin.textContent = window.loggedInUser.coin;
+        userPlayTimes.textContent = window.loggedInUser.playtimes;
+        userWinTimes.textContent = window.loggedInUser.wintimes;
+
+        // キルレートを計算（プレイ回数が0の場合は0とする）
+        const killRate = window.loggedInUser.playtimes > 0
+            ? (window.loggedInUser.wintimes / window.loggedInUser.playtimes * 100).toFixed(2)
+            : 0;
+        userKillRate.textContent = killRate + '%';
+
+        // 情報画面を表示
+        infoScreen.classList.remove('hidden');
+        setTimeout(() => {
+            infoScreen.classList.add('visible');
+        }, 10);
+
+        // メイン画面の要素を非表示
+        changePortButton.style.display = "none";
+        logoutButton.style.display = "none";
+        InforButton.style.display = "none";
+        bearImange.style.display = "none";
+        rightImange.style.display = "none";
+        leftImange.style.display = "none";
+    }
+
+    function hideInfoScreen() {
+        // 情報画面を非表示
+        infoScreen.classList.remove('visible');
+        setTimeout(() => {
+            infoScreen.classList.add('hidden');
+        }, 300);
+
+        // メイン画面の要素を再表示
+        changePortButton.style.display = "block";
+        logoutButton.style.display = "block";
+        InforButton.style.display = "block";
+        bearImange.style.display = "block";
+        rightImange.style.display = "block";
+        leftImange.style.display = "block";
+    }
 
     function createStarfield() {
         const starCount = 200;

@@ -526,11 +526,11 @@ body:active::after {
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
-/* Change Port Button */
+
 #changePortButton {
     background-color: transparent;
-    color: #00ffff;
-    border: 2px solid #00ffff;
+    color: #ffff00;
+    border: 2px solid #ffff00;
     padding: 10px 20px;
     font-size: 50px;
     cursor: none;
@@ -540,7 +540,7 @@ body:active::after {
     font-family: 'Audiowide', cursive;
     text-transform: uppercase;
     letter-spacing: 2px;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(242, 255, 0, 0.5);
     /* Position: Adjust these values as needed */
     top: 42vh;
     left: 35vw;
@@ -549,7 +549,7 @@ body:active::after {
 
 #changePortButton:hover {
     background-color: rgba(0, 255, 255, 0.1);
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 25px rgba(208, 255, 0, 0.8);
     transform: scale(1.05);
 }
 
@@ -597,6 +597,31 @@ body:active::after {
     z-index: 100; /* 他の要素より前面に表示 */
 }
 
+#rightImage {
+    display: none; /* 画像を表示 */
+    position: fixed; /* 絶対位置指定 */
+    top: 50%; /* 垂直中央 */
+    left: 50%; /* 水平中央 */
+    transform: translate(250%, -50%); /* 画像の中央を基準に位置を調整 */
+    width: 40%; /* 画像の幅を適切に調整 */
+    height: auto;
+    z-index: 100; /* 他の要素より前面に表示 */
+}
+
+
+#leftImage {
+    display: none; /* 画像を表示 */
+    position: fixed; /* 絶対位置指定 */
+    top: 50%; /* 垂直中央 */
+    left: 50%; /* 水平中央 */
+    transform: translate(-350%, -50%); /* 画像の中央を基準に位置を調整 */
+    width: 40%; /* 画像の幅を適切に調整 */
+    height: auto;
+    z-index: 100; /* 他の要素より前面に表示 */
+}
+
+
+
 
 #changePortButton, #logoutButton, #InforButton{
     margin: 10px 0;
@@ -606,8 +631,8 @@ body:active::after {
 
 #InforButton {
     background-color: transparent;
-    color: #ff00ff;
-    border: 2px solid #ff00ff;
+    color: #00fffb;
+    border: 2px solid #00fffb;
     padding: 10px 20px;
     font-size: 18px;
     cursor: none;
@@ -617,17 +642,58 @@ body:active::after {
     font-family: 'Audiowide', cursive;
     text-transform: uppercase;
     letter-spacing: 2px;
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 225, 255, 0.5);
     top: -35vh;
     left: -35vw;
     z-index: 1000;
 }
 #InforButton:hover {
-    background-color: rgba(255, 0, 255, 0.1);
-    box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+    background-color: rgba(0, 221, 255, 0.1);
+    box-shadow: 0 0 25px rgba(0, 174, 255, 0.8);
     transform: scale(1.05);
 }
 
 #InforButton:active {
     transform: scale(0.95);
+}
+#infoScreen {
+    z-index: 1001;
+}
+
+#infoScreen .login-container {
+    width: 95vw;  /* 幅をさらに大きく */
+    max-width: 1800px;  /* 最大幅をさらに増やす */
+    padding: 3rem 4rem;  /* 上下のパディングを少し減らす */
+    height: auto;  /* 高さを自動調整 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#infoScreen h2 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+#userInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#userInfo p {
+    flex-basis: 48%;  /* 2列レイアウト */
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    text-align: left;
+}
+
+#backButton {
+    width: 30%;  /* ボタンの幅を調整 */
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    align-self: center;  /* ボタンを中央に配置 */
 }

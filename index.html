@@ -56,6 +56,25 @@
         <button id="InforButton" style="display: none;">Infomation</button>
 
         <img id="bearImage" src="image/bear.png" alt="">
+        <img id="rightImage" src="image/left.svg" alt="">
+        <img id="leftImage" src="image/rignt.svg" alt="">
+
+
+        <div id="infoScreen" class="login-screen hidden">
+            <div class="login-container">
+                <h2 class="glitch" data-text="USER INFO">USER INFO</h2>
+                <div id="userInfo">
+                    <p>Coin: <span id="userCoin"></span></p>
+                    <p>Play Times: <span id="userPlayTimes"></span></p>
+                    <p>Win Times: <span id="userWinTimes"></span></p>
+                    <p>Kill Rate: <span id="userKillRate"></span></p>
+                </div>
+                <button id="backButton" class="game-button">
+                    <span class="btn-content">Back</span>
+                    <span class="btn-glitch"></span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <div id="particles-container" class="hidden"></div>
