@@ -228,10 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    rightImange.addEventListener('click', () => {
-        window.char++;
-    });
-
 
 
     function createStarfield() {
