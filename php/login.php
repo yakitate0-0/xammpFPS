@@ -6,13 +6,18 @@ function getUserData($pdo, $id) {
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue('id', $id, PDO::PARAM_STR);
     $stmt->execute();
-    return $stmt->fetch();
+    $result = $stmt->fetch();
+    
+    // デバッグ出力
+    error_log("User data for ID $id: " . print_r($result, true));
+    
+    return $result;
 }
 
 if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
     try {
         $pdo = new PDO(
-            "mysql:host=localhost;dbname=FPSplayer;",
+            "mysql:host=localhost;dbname=FPSplayer;charset=utf8mb4",
             "root",
             "",
             [
@@ -29,6 +34,9 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
         $stmt->execute();
         $result = $stmt->fetchAll();
 
+        // デバッグ出力
+        error_log("Login result for ID " . $_POST["id"] . ": " . print_r($result, true));
+
         if (count($result) != 0) {
             foreach ($result as $item) {
                 if (password_verify($_POST["pass"], $item["pass"])) {
@@ -37,9 +45,9 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
                     $_SESSION['user'] = [
                         'id' => $item['id'],
                         'name' => $item['name'],
-                        'coin' => $stats['coin'],
-                        'playtimes' => $stats['playtimes'],
-                        'wintimes' => $stats['wintimes']
+                        'coin' => $stats['coin'] ?? null,
+                        'playtimes' => $stats['playtimes'] ?? null,
+                        'wintimes' => $stats['wintimes'] ?? null
                     ];
 
                     $response = [
@@ -51,12 +59,15 @@ if (!empty($_POST["id"]) && !empty($_POST["pass"])) {
                     exit;
                 }
             }
-            echo json_encode(['status' => 'error', 'message' => 'ログインに失敗しました']);
+            echo json_encode(['status' => 'error', 'message' => 'パスワードが正しくありません']);
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'ログインに失敗しました']);
+            echo json_encode(['status' => 'error', 'message' => 'ユーザーが見つかりません']);
         }
     } catch (Exception $e) {
-        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+        error_log("Login error: " . $e->getMessage());
+        echo json_encode(['status' => 'error', 'message' => 'データベースエラー: ' . $e->getMessage()]);
     }
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'IDとパスワードを入力してください']);
 }
 ?>

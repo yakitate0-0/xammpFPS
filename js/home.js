@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    handleLoginSuccess(data);
+                    handleLoginSuccess(data.user);
                 } else {
                     handleLoginError(data.message);
                 }
