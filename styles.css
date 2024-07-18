@@ -557,7 +557,6 @@ body:active::after {
     transform: scale(0.95);
 }
 
-/* Logout Button */
 #logoutButton {
     background-color: transparent;
     color: #ff00ff;
