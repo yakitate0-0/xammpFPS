@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     rightImage.addEventListener('click', () => {
         currentImageIndex = (currentImageIndex + 1) % images.length;
         showImage(currentImageIndex);
+        window.char = currentImageIndex;
     });
 
     leftImage.addEventListener('click', () => {
         currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
         showImage(currentImageIndex);
+        window.char = currentImageIndex;
     });
 
     showImage(currentImageIndex); // 初期表示
