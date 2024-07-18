@@ -732,8 +732,8 @@ body:active::after {
 }
 
 #userInfo p {
-    margin: 10px 0;
-    font-size: 18px;
+    margin: 30px 0;
+    font-size: 24px;
 }
 
 #backButton {
