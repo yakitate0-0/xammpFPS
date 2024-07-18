@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const changePortButton = document.getElementById('changePortButton');
         const logoutButton = document.getElementById('logoutButton');
         const particlesContainer = document.getElementById('particles-container');
+        const bearImange = document.getElementById('bearImage');
         let waittime = 3000;
 
         particlesContainer.classList.remove('hidden');
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             welcomeMessage.style.display = "none";
             changePortButton.style.display = "block";
             logoutButton.style.display = "block";
+            bearImange.style.display="block";
         }, waittime);
     }
 

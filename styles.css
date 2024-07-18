@@ -542,8 +542,8 @@ body:active::after {
     letter-spacing: 2px;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
     /* Position: Adjust these values as needed */
-    top: 20px;
-    right: 20px;
+    top: 35vh;
+    left: -15vw;
     z-index: 1000;
 }
 
@@ -572,8 +572,8 @@ body:active::after {
     letter-spacing: 2px;
     box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
     /* Position: Adjust these values as needed */
-    top: 20px;
-    left: 20px;
+    top: 35vh;
+    left: 5vw;
     z-index: 1000;
 }
 
@@ -585,4 +585,11 @@ body:active::after {
 
 #logoutButton:active {
     transform: scale(0.95);
+}
+
+#bearImage {
+    display: none;
+    width: 80%; /* 画像サイズを調整 */
+    height: auto; /* アスペクト比を維持 */
+    margin: 20px 0; /* 上下のマージンを追加 */
 }
