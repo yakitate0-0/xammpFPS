@@ -1,8 +1,20 @@
+const newPort = 3000;
+const nextPort = 3100;
+let Port = newPort;
+
+document.getElementById('stageButton').addEventListener('click', function () {
+    if (Port == 0) {
+        Port = newPort;
+    } else if (Port == 1) {
+        Port = nextPort;
+    }
+    console.warn(Port);
+});
+
 document.getElementById('changePortButton').addEventListener('click', function () {
     // 現在のホスト名を取得
     const host = window.location.hostname;
     // 新しいポート番号を指定
-    const newPort = 3000;
 
     // playtimesを更新するリクエストを送信
     fetch('php/dataup.php', {
@@ -20,7 +32,7 @@ document.getElementById('changePortButton').addEventListener('click', function (
             if (data.status === 'success') {
                 console.log('Playtimes updated successfully');
                 // 新しいURLにリダイレクト
-                window.location.href = `http://${host}:${newPort}?id=${window.loggedInUser.id}&char=${window.char}`;
+                window.location.href = `http://${host}:${Port}?id=${window.loggedInUser.id}&char=${window.char}`;
             } else {
                 console.error('Failed to update playtimes:', data.message);
                 alert('Failed to update playtimes.');
