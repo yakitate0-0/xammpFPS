@@ -3,9 +3,9 @@ const nextPort = 3100;
 let Port = newPort;
 
 document.getElementById('stageButton').addEventListener('click', function () {
-    if (Port == 0) {
+    if (Port == nextPort) {
         Port = newPort;
-    } else if (Port == 1) {
+    } else if (Port == newPort) {
         Port = nextPort;
     }
     console.warn(Port);
