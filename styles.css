@@ -705,7 +705,7 @@ z-index: 100;
     font-family: 'Audiowide', cursive;
     text-transform: uppercase;
     letter-spacing: 2px;
-    box-shadow: 0 0 15px rgba(0, 225, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 174, 255, 0.5);
     top: -35vh;
     left: 42vw;
     z-index: 1000;
