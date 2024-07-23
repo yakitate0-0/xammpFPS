@@ -5,8 +5,10 @@ let Port = newPort;
 document.getElementById('stageButton').addEventListener('click', function () {
     if (Port == nextPort) {
         Port = newPort;
+        document.getElementById('stageButton').style.color = '#00fffb';
     } else if (Port == newPort) {
         Port = nextPort;
+        document.getElementById('stageButton').style.color = '#ff0000';
     }
     console.warn(Port);
 });
