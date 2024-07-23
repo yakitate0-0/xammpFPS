@@ -383,7 +383,6 @@ html {
     z-index: 3;
 }
 
-/* Custom cursor */
 body {
     cursor: none;
 }
@@ -541,7 +540,6 @@ body:active::after {
     text-transform: uppercase;
     letter-spacing: 2px;
     box-shadow: 0 0 15px rgba(242, 255, 0, 0.5);
-    /* Position: Adjust these values as needed */
     top: 42vh;
     left: 35vw;
     z-index: 1000;
@@ -593,63 +591,39 @@ body:active::after {
 #jumpImage,
 #healImage,
 #brakerImage,
-#anyImage
-{
-display: none;
-/* 画像を表示 */
-position: fixed;
-/* 絶対位置指定 */
-top: 50%;
-/* 垂直中央 */
-left: 50%;
-/* 水平中央 */
-transform: translate(-50%, -50%);
-/* 画像の中央を基準に位置を調整 */
-width: 400%;
-/* 画像の幅を適切に調整 */
-height: auto;
-z-index: 100;
-/* 他の要素より前面に表示 */
+#anyImage {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400%;
+    height: auto;
+    z-index: 100;
 }
 
 #rightImage {
     display: none;
-    /* 画像を表示 */
     position: fixed;
-    /* 絶対位置指定 */
     top: 50%;
-    /* 垂直中央 */
     left: 50%;
-    /* 水平中央 */
     transform: translate(250%, -50%);
-    /* 画像の中央を基準に位置を調整 */
     width: 40%;
-    /* 画像の幅を適切に調整 */
     height: auto;
     z-index: 100;
-    /* 他の要素より前面に表示 */
 }
 
 
 #leftImage {
     display: none;
-    /* 画像を表示 */
     position: fixed;
-    /* 絶対位置指定 */
     top: 50%;
-    /* 垂直中央 */
     left: 50%;
-    /* 水平中央 */
     transform: translate(-350%, -50%);
-    /* 画像の中央を基準に位置を調整 */
     width: 40%;
-    /* 画像の幅を適切に調整 */
     height: auto;
     z-index: 100;
-    /* 他の要素より前面に表示 */
 }
-
-
 
 
 #changePortButton,
@@ -657,9 +631,7 @@ z-index: 100;
 #InforButton {
     margin: 10px 0;
     position: relative;
-    /* 追加 */
     z-index: 1;
-    /* 追加 */
 }
 
 #InforButton {

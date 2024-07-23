@@ -7,10 +7,6 @@ function getUserData($pdo, $id) {
     $stmt->bindValue('id', $id, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetch();
-    
-    // デバッグ出力
-    error_log("User data for ID $id: " . print_r($result, true));
-    
     return $result;
 }
 
