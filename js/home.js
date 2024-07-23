@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 if (data.status === 'success') {
                     console.log('ログアウト成功');
-                    window.location.reload(); // ページをリロードしてログイン画面に戻る
+                    window.location.reload();
                 } else {
                     console.error('ログアウト失敗:', data.message);
                 }
@@ -194,19 +194,17 @@ document.addEventListener('DOMContentLoaded', () => {
         userPlayTimes.textContent = window.loggedInUser.playtimes;
         userWinTimes.textContent = window.loggedInUser.wintimes;
 
-        // キルレートを計算（プレイ回数が0の場合は0とする）
+        // キルレートを計算
         const killRate = window.loggedInUser.playtimes > 0
             ? (window.loggedInUser.wintimes / window.loggedInUser.playtimes * 100).toFixed(2)
             : 0;
         userKillRate.textContent = killRate + '%';
 
-        // 情報画面を表示
         infoScreen.classList.remove('hidden');
         setTimeout(() => {
             infoScreen.classList.add('visible');
         }, 10);
 
-        // メイン画面の要素を非表示
         changePortButton.style.display = "none";
         logoutButton.style.display = "none";
         InforButton.style.display = "none";
@@ -217,13 +215,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function hideInfoScreen() {
-        // 情報画面を非表示
         infoScreen.classList.remove('visible');
         setTimeout(() => {
             infoScreen.classList.add('hidden');
         }, 300);
 
-        // メイン画面の要素を再表示
         changePortButton.style.display = "block";
         logoutButton.style.display = "block";
         InforButton.style.display = "block";

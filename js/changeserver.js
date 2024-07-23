@@ -14,9 +14,7 @@ document.getElementById('stageButton').addEventListener('click', function () {
 });
 
 document.getElementById('changePortButton').addEventListener('click', function () {
-    // 現在のホスト名を取得
     const host = window.location.hostname;
-    // 新しいポート番号を指定
 
     // playtimesを更新するリクエストを送信
     fetch('php/dataup.php', {
@@ -54,5 +52,3 @@ url.searchParams.delete('result');
 url.searchParams.delete('playerid');
 window.history.replaceState({}, document.title, url);
 window.char = 0;
-
-// 取得した値を表示

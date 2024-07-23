@@ -22,5 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
         window.char = currentImageIndex;
     });
 
-    showImage(currentImageIndex); // 初期表示
+    showImage(currentImageIndex);
 });
